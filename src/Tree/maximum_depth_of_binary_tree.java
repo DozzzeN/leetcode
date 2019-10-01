@@ -27,7 +27,6 @@ public class maximum_depth_of_binary_tree {
         //如果当前节点为空，那么当前节点的子树深度为0
         //如果有左节点，那么深度是当前深度加1和左节点的子树深度的最大值
         //如果都有，那么深度就是左右节点的子树深度最大值加一
-
         public int getDepth(TreeNode root) {
             int depth = 1;
             if (root == null) return 0;
