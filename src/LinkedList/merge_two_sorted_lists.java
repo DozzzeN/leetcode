@@ -7,18 +7,11 @@ package LinkedList;
 //输出：1->1->2->3->4->4
 public class merge_two_sorted_lists {
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(1);
-        l1.next = new ListNode(2);
-        l1.next.next = new ListNode(4);
+        ListNode l1 = ListNode.stringToListNode("[1,2,4]");
 
-        ListNode l2 = new ListNode(1);
-        l2.next = new ListNode(3);
-        l2.next.next = new ListNode(4);
+        ListNode l2 = ListNode.stringToListNode("[1,3,4]");
         ListNode result = new merge_two_sorted_lists.Solution().mergeTwoLists(l1, l2);
-        while (result != null) {
-            System.out.println(result.val);
-            result = result.next;
-        }
+        System.out.println(ListNode.listNodeToString(result));
     }
 
     //用双指针分别扫描两个链表，扫描过程中，不断比较两个指针指向的链表节点的值，将小的节点插入到新链表中

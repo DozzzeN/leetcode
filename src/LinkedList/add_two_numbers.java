@@ -14,17 +14,12 @@ package LinkedList;
 //求和运算最后可能出现额外的进位，这一点很容易被遗忘 99+1
 public class add_two_numbers {
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(1);
+        ListNode l1 = ListNode.stringToListNode("[1]");
 
-        ListNode l2 = new ListNode(9);
-        l2.next = new ListNode(9);
-        //l2.next.next = new ListNode(4);
+        ListNode l2 = ListNode.stringToListNode("[9,9]");
 
-        ListNode temp = new add_two_numbers.Solution().addTwoNumbers(l1, l2);
-        while (temp != null) {
-            System.out.print(temp.val);
-            temp = temp.next;
-        }
+        ListNode result = new add_two_numbers.Solution().addTwoNumbers(l1, l2);
+        System.out.println(ListNode.listNodeToString(result));
     }
 
     static class Solution {

@@ -47,7 +47,6 @@ public class permutation {
                     count++;
                     if (j == 1 && count == 1) {
                         break;
-
                     }
 
                     if (count == doFactorial(j)) {
@@ -55,10 +54,8 @@ public class permutation {
                     }
                 }
             }
-
         }
         return result;
-
     }
 
     public static int doFactorial(int n) {

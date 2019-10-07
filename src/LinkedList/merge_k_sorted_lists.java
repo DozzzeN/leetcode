@@ -12,22 +12,14 @@ package LinkedList;
 //Êä³ö: 1->1->2->3->4->4->5->6
 public class merge_k_sorted_lists {
     public static void main(String[] args) {
-        ListNode l1 = new ListNode(1);
-        l1.next = new ListNode(4);
-        l1.next.next = new ListNode(5);
+        ListNode l1 = ListNode.stringToListNode("[1,4,5]");
 
-        ListNode l2 = new ListNode(1);
-        l2.next = new ListNode(3);
-        l2.next.next = new ListNode(4);
+        ListNode l2 = ListNode.stringToListNode("[1,3,4]");
 
-        ListNode l3 = new ListNode(2);
-        l3.next = new ListNode(6);
+        ListNode l3 = ListNode.stringToListNode("[2,6]");
         ListNode[] input = new ListNode[]{l1, l2, l3};
         ListNode result = new merge_k_sorted_lists.Solution().mergeKLists(input);
-        while (result != null) {
-            System.out.println(result.val);
-            result = result.next;
-        }
+        System.out.println(ListNode.listNodeToString(result));
     }
 
     static class Solution {
