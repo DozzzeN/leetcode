@@ -60,7 +60,7 @@ public class group_anagrams {
                     if (s.equals(hashTable.get(i))) {
                         //一个add方法即可搞定向map中同一个键追加值的问题
                         revHash.get(s).add(strs[i]);
-                    } else if (!revHash.keySet().contains(hashTable.get(i))) {
+                    } else if (!revHash.containsKey(hashTable.get(i))) {
                         List<String> newStr = new ArrayList<>();
                         newStr.add(strs[i]);
                         used.add(i);
@@ -69,10 +69,7 @@ public class group_anagrams {
                 }
             }
             for (String strHash : revHash.keySet()) {
-                List<String> strings = new ArrayList<>();
-                for (String s : revHash.get(strHash)) {
-                    strings.add(s);
-                }
+                List<String> strings = new ArrayList<>(revHash.get(strHash));
                 result.add(strings);
             }
             return result;

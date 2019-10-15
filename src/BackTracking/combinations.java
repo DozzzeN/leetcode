@@ -28,7 +28,6 @@ public class combinations {
         public List<List<Integer>> combine(int n, int k) {
             getCombine(0, new Stack<>(), k, n);
             return result;
-
         }
 
         public void getCombine(int start, Stack<Integer> solution, int k, int n) {

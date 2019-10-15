@@ -20,7 +20,7 @@ public class kth_smallest_element_in_a_sorted_matrix {
             int m = matrix.length, n = matrix[0].length;
             int low = matrix[0][0], high = matrix[m - 1][n - 1];
             while (low <= high) {
-                int mid = low + (high - low) / 2;
+                int mid = low + (high - low) >>> 1;
                 int cnt = 0;
                 //计算出矩阵中小于等于mid的元素个数cnt（只计算个数，无须排序）
                 for (int i = 0; i < m; i++) {

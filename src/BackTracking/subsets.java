@@ -3,17 +3,31 @@ package BackTracking;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-//每增长一个元素组成的新的幂集 = 增长前的幂集 + 该元素与增长前幂集的组合
-//    step1: X1 = {a}
-//        幂集: {}、{a}
-//    step2: X2 = {a,b}
-//        幂集: {}、{a} + ({}{b} + {a}{b}) = {} 、{a}、{b}、{a,b}
+//78
+//给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。
+//说明：解集不能包含重复的子集。
+//示例:
+//输入: nums = [1,2,3]
+//输出:
+//[
+//  [3],
+//  [1],
+//  [2],
+//  [1,2,3],
+//  [1,3],
+//  [2,3],
+//  [1,2],
+//  []
+//]
 public class subsets {
     public static List<List<Integer>> result = new ArrayList<>();
     public static List<List<Integer>> temp = new ArrayList<>();
 
-
+    //每增长一个元素组成的新的幂集 = 增长前的幂集 + 该元素与增长前幂集的组合
+    //step1: X1 = {a}
+    //幂集: {}、{a}
+    //step2: X2 = {a,b}
+    //幂集: {}、{a} + ({}{b} + {a}{b}) = {} 、{a}、{b}、{a,b}
     public static List<List<Integer>> subsets(int[] nums) {
         result.clear();
         result.addAll(simpleSets(nums[0]));
@@ -27,11 +41,8 @@ public class subsets {
         return result;
     }
 
-    static List<Integer> concat(List<Integer> list, int b) {
-        List<Integer> c = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            c.add(list.get(i));
-        }
+    public static List<Integer> concat(List<Integer> list, int b) {
+        List<Integer> c = new ArrayList<>(list);
         c.add(b);
         return c;
     }
@@ -41,7 +52,6 @@ public class subsets {
         List<Integer> ele = new ArrayList<>();
         ele.add(element);
         List<Integer> empty = new ArrayList<>();
-        empty.clear();
         List<List<Integer>> res = new ArrayList<>();
         res.add(ele);
         res.add(empty);
@@ -61,24 +71,14 @@ public class subsets {
 
     public static List<List<Integer>> subsets2(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        backtrack(0, nums, res, new ArrayList<Integer>());
+        backtrack(0, nums, res, new ArrayList<>());
         return res;
 
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 2};
+        int[] nums = new int[]{1, 2, 3};
         Arrays.sort(nums);
-        List<List<Integer>> result = subsets(nums);
-        for (List<Integer> list : result) {
-            System.out.println(list);
-        }
-
-//        List<List<Integer>> result = subsets2(nums);
-//        for (List<Integer> list : result) {
-//            System.out.println(list);
-//        }
-
-
+        System.out.println(subsets(nums));
     }
 }

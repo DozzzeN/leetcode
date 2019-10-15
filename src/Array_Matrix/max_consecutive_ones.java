@@ -23,7 +23,7 @@ public class max_consecutive_ones {
                     num = 0;
                 }
             }
-            return num >= temp ? num : temp;
+            return Math.max(num, temp);
         }
     }
 }

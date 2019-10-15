@@ -4,7 +4,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class subsetsWithDup {
+//90
+//给定一个可能包含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。
+//说明：解集不能包含重复的子集。
+//示例:
+//输入: [1,2,2]
+//输出:
+//[
+//  [2],
+//  [1],
+//  [1,2,2],
+//  [2,2],
+//  [1,2],
+//  []
+//]
+public class subsets_ii {
     public static List<List<Integer>> result = new ArrayList<>();
     public static List<List<Integer>> temp = new ArrayList<>();
 
@@ -26,10 +40,7 @@ public class subsetsWithDup {
     }
 
     static List<Integer> concat(List<Integer> list, int b) {
-        List<Integer> c = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            c.add(list.get(i));
-        }
+        List<Integer> c = new ArrayList<>(list);
         c.add(b);
         return c;
     }
@@ -39,7 +50,6 @@ public class subsetsWithDup {
         List<Integer> ele = new ArrayList<>();
         ele.add(element);
         List<Integer> empty = new ArrayList<>();
-        empty.clear();
         List<List<Integer>> res = new ArrayList<>();
         res.add(ele);
         res.add(empty);
@@ -65,17 +75,14 @@ public class subsetsWithDup {
     public static List<List<Integer>> subsetsWithDup2(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
-        backtrack(0, nums, res, new ArrayList<Integer>());
+        backtrack(0, nums, res, new ArrayList<>());
         return res;
 
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1,2,2};
+        int[] nums = new int[]{1, 2, 2};
         Arrays.sort(nums);
-        List<List<Integer>> result = subsetsWithDup2(nums);
-        for (List<Integer> list : result) {
-            System.out.println(list);
-        }
+        System.out.println(subsetsWithDup2(nums));
     }
 }

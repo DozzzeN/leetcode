@@ -23,7 +23,7 @@ public class best_time_to_buy_and_sell_stock_ii {
             }
             int maxP = 0;
             for (int i = 0; i < prices.length - 1; i++) {
-                maxP += prices[i + 1] - prices[i] > 0 ? prices[i + 1] - prices[i] : 0;
+                maxP += Math.max(prices[i + 1] - prices[i], 0);
             }
             return maxP;
         }

@@ -21,9 +21,9 @@ public class sqrtx {
     static class Solution {
         public int mySqrt(int x) {
             if (x == 1) return 1;
-            long start = 0, end = x >> 1;
+            long start = 0, end = x >>> 1;
             while (start <= end) {
-                long mid = (start + end) >> 1;
+                long mid = (start + end) >>> 1;
                 long sqr = mid * mid;
                 if (sqr > x) {
                     end = mid - 1;

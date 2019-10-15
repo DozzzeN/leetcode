@@ -17,7 +17,7 @@ public class find_the_duplicate_number {
             //二分查找法
             int l = 1, h = nums.length - 1;
             while (l <= h) {
-                int mid = l + (h - l) / 2;
+                int mid = l + (h - l) >>> 1;
                 int cnt = 0;
                 for (int i = 0; i < nums.length; i++) {
                     //数组中小于mid的个数为cnt

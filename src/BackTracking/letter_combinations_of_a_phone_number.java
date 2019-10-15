@@ -12,7 +12,7 @@ import java.util.List;
 public class letter_combinations_of_a_phone_number {
     public static void main(String[] args) {
         List<String> result = new letter_combinations_of_a_phone_number.Solution().letterCombinations(
-                ""
+                "23"
         );
         System.out.println(result);
     }
@@ -22,8 +22,8 @@ public class letter_combinations_of_a_phone_number {
 
         public List<String> letterCombinations(String digits) {
             if (digits == null || digits.length() == 0) return set;
-            String trans[] = new String[]{"", " ", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-            generater(trans, digits, new String(), 0);
+            String[] trans = new String[]{"", " ", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+            generater(trans, digits, "", 0);
             return set;
         }
 

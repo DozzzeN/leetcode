@@ -21,6 +21,7 @@ public class minimum_window_substring02 {
         public String minWindow(String s, String t) {
             if (s == null || s.length() == 0) return "";
             if (t == null || s.length() < t.length()) return "";
+            //采用两个哈希表来表示是否找到目标字符串
             int[] appearCount = new int[256];
             int[] expectCount = new int[256];
             for (int i = 0; i < t.length(); i++) {
@@ -28,9 +29,9 @@ public class minimum_window_substring02 {
             }
             int minV = Integer.MAX_VALUE;
             int minStart = 0;
-            int widStart = 0;
+            int widStart = 0;//左指针
             int appeared = 0;
-            for (int widEnd = 0; widEnd < s.length(); widEnd++) {
+            for (int widEnd = 0; widEnd < s.length(); widEnd++) {//右指针
                 if (expectCount[s.charAt(widEnd)] > 0) {
                     appearCount[s.charAt(widEnd)]++;
                     //统计S中出现T的字符的个数appeared
