@@ -15,7 +15,7 @@ import java.util.*;
 //   0 - 2
 //      / \
 //      \_/
-public class clone_graph {
+public class clone_graph02 {
     public static void main(String[] args) {
         Node _0 = new Node();
         Node _1 = new Node();
@@ -33,7 +33,8 @@ public class clone_graph {
         _0 = new Node(0, _0Neighbors);
         _1 = new Node(1, _1Neighbors);
         _2 = new Node(2, _2Neighbors);
-        System.out.println(new clone_graph.Solution().cloneGraph(_0));
+        //测试用例有错
+        System.out.println(new clone_graph02.Solution().cloneGraph(_0));
     }
 
     static class Node {
@@ -49,25 +50,20 @@ public class clone_graph {
         }
     }
 
-    //广度优先搜索
+    //深度优先搜索
     static class Solution {
         public Node cloneGraph(Node node) {
-            if (node == null) return null;
             Map<Node, Node> nodeMap = new HashMap<>();//存储源节点和拷贝节点下
-            Queue<Node> visit = new LinkedList<>();
-            visit.offer(node);
+            return dfs(node, nodeMap);
+        }
+
+        public Node dfs(Node node, Map<Node, Node> nodeMap) {
+            if (node == null) return null;
+            if (nodeMap.containsKey(node)) return nodeMap.get(node);
             Node nodeCopy = new Node(node.val, new ArrayList<>());
             nodeMap.put(node, nodeCopy);
-            while (!visit.isEmpty()) {
-                Node cur = visit.poll();
-                for (Node neighbor : cur.neighbors) {
-                    if (!nodeMap.containsKey(neighbor)) {//map里面没有邻居节点，创建一个加入map
-                        nodeMap.put(neighbor, new Node(neighbor.val, new ArrayList<>()));
-                        visit.offer(neighbor);
-                    }
-                    //然后将邻居节点加入cur节点的邻居字段中
-                    nodeMap.get(cur).neighbors.add(nodeMap.get(neighbor));
-                }
+            for (Node neighbor : node.neighbors) {
+                nodeCopy.neighbors.add(dfs(neighbor, nodeMap));
             }
             return nodeCopy;
         }

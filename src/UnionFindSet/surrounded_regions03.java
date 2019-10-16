@@ -1,7 +1,5 @@
 package UnionFindSet;
 
-import Array_Matrix.two_sum03;
-
 import java.util.Arrays;
 
 //130
@@ -39,6 +37,7 @@ public class surrounded_regions03 {
     //不和边界上的 O 在一个连通区域内的。这些 O 就是被包围的，替换。
     static class Solution {
         public int col = 0;
+
         public void solve(char[][] board) {
             if (board == null || board.length == 0 || board[0].length == 0) return;
             int row = board.length;
@@ -50,7 +49,7 @@ public class surrounded_regions03 {
                     if (board[i][j] == 'O') {
                         if (i == 0 || i == row - 1 || j == 0 || j == col - 1) {
                             unionFindSet.Union(node(i, j), dummy);
-                        }else {
+                        } else {
                             // 和上下左右合并成一个连通区域.
                             if (i > 0 && board[i - 1][j] == 'O')
                                 unionFindSet.Union(node(i, j), node(i - 1, j));
