@@ -31,7 +31,7 @@ public class guess_number_higher_or_lower_ii {
                 return 0;
             int minres = Integer.MAX_VALUE;
             for (int i = low; i <= high; i++) {
-            //优化 for (int i = (low + high) / 2; i <= high; i++) {
+                //优化 for (int i = (low + high) / 2; i <= high; i++) {
                 int res = i + Math.max(calculate(i + 1, high), calculate(low, i - 1));
                 minres = Math.min(res, minres);
             }

@@ -34,7 +34,7 @@ public class edit_distance {
     //D[i][j] = 1 + min(D[i - 1][j], D[i][j - 1], D[i - 1][j - 1])
     static class Solution {
         public int minDistance(String word1, String word2) {
-            int D[][] = new int[word1.length() + 1][word2.length() + 1];
+            int[][] D = new int[word1.length() + 1][word2.length() + 1];
             for (int i = 0; i <= word1.length(); i++) {
                 D[i][0] = i;
             }

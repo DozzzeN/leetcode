@@ -15,7 +15,7 @@ import java.util.List;
 //]
 public class three_sum {
     public static void main(String[] args) {
-        int[] nums = new int[]{10,0,0};
+        int[] nums = new int[]{10, 0, 0};
         List<List<Integer>> result = new Solution().threeSum(nums);
         System.out.println(result);
     }

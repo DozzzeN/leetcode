@@ -31,6 +31,7 @@ public class construct_binary_tree_from_inorder_and_postorder_traversal {
             this.postorder = postorder;
             return buildTree(0, inorder.length - 1, 0, postorder.length - 1);
         }
+
         //只传固定的数组和子数组边界索引，不用传各个左子树和右子树数组，减少空间复杂度
         public TreeNode buildTree(int inStart, int inEnd, int postStart, int postEnd) {
             if (postEnd < postStart || inEnd < inStart) return null;

@@ -1,7 +1,5 @@
 package LinkedList;
 
-import com.sun.jdi.IntegerValue;
-
 //148
 //在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。
 //示例 1:
@@ -16,6 +14,7 @@ public class sort_list {
         ListNode result = new sort_list.Solution().sortList(head);
         System.out.println(ListNode.listNodeToString(result));
     }
+
     //合并排序 使用递归时空间复杂度为O(logn)
     //知识点1：归并排序的整体思想
     //知识点2：找到一个链表的中间节点的方法
@@ -39,7 +38,7 @@ public class sort_list {
                 ListNode slow = dummy.next;
                 ListNode fast = dummy.next;
                 while (fast != null || slow != null) {
-                    int i =0;
+                    int i = 0;
                     while (i < interval && fast != null) {
                         //fast指针向前移动interval步，指向此次合并的下一个interval的起点位置
                         //不足一个interval时，fast可能为空

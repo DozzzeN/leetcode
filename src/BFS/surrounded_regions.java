@@ -89,8 +89,8 @@ public class surrounded_regions {
             }
             for (int i = 0; i < row; i++) {
                 for (int j = 0; j < col; j++) {
-                    if (board[i][j]=='O') board[i][j] = 'X';
-                    if (board[i][j]=='Y') board[i][j] = 'O';
+                    if (board[i][j] == 'O') board[i][j] = 'X';
+                    if (board[i][j] == 'Y') board[i][j] = 'O';
                 }
             }
         }

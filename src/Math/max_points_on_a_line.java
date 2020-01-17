@@ -74,7 +74,7 @@ public class max_points_on_a_line {
         //还可以求出最大公约数，然后再用它化简被除数和除数，保留最简的两个数
         //如3/6 = 1/2，可以解决精度问题
         public int gcd(int v1, int v2) {
-            if (v2 == 0){
+            if (v2 == 0) {
                 return v1;
             }
             return gcd(v2, v1 % v2);

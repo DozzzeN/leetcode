@@ -21,10 +21,11 @@ public class distinct_subsequences02 {
                 "babgbag", "bag"
         ));
     }
+
     //递归之分治（回溯）
     //使用备忘录（还是会超时）
     static class Solution {
-        public int memo[][];
+        public int[][] memo;
 
         public int numDistinct(String s, String t) {
             memo = new int[s.length() + 1][t.length() + 1];

@@ -18,8 +18,8 @@ public class isomorphic_strings {
             if (s.length() == 0 && t.length() == 0) {
                 return true;
             }
-            int sNum[] = new int[s.length()];
-            int tNum[] = new int[t.length()];
+            int[] sNum = new int[s.length()];
+            int[] tNum = new int[t.length()];
             sNum[0] = 1;
             tNum[0] = 1;
             int max = 1;

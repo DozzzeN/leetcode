@@ -1,6 +1,7 @@
 package Array_Matrix;
 
 import java.util.PriorityQueue;
+
 //378
 public class kth_smallest_element_in_a_sorted_matrix02 {
     public static void main(String[] args) {
@@ -46,12 +47,12 @@ public class kth_smallest_element_in_a_sorted_matrix02 {
             int m = matrix.length, n = matrix[0].length;
             PriorityQueue<Tuple> pq = new PriorityQueue<Tuple>();
             //第一行入队
-            for(int j = 0; j < n; j++) pq.offer(new Tuple(0, j, matrix[0][j]));
+            for (int j = 0; j < n; j++) pq.offer(new Tuple(0, j, matrix[0][j]));
             //当循环k-1次后，堆顶元素即为所求
-            for(int i = 0; i < k - 1; i++) { // 小顶堆，去掉 k - 1 个堆顶元素，此时堆顶元素就是第 k 的数
+            for (int i = 0; i < k - 1; i++) { // 小顶堆，去掉 k - 1 个堆顶元素，此时堆顶元素就是第 k 的数
                 //出队即最小元素：堆顶（第一行最小元素即整个矩阵最小元素）
                 Tuple t = pq.poll();
-                if(t.x == m - 1) continue;
+                if (t.x == m - 1) continue;
                 //下一行第一个元素入队（出队的元素的正下方元素入队）
                 pq.offer(new Tuple(t.x + 1, t.y, matrix[t.x + 1][t.y]));
             }
@@ -60,8 +61,11 @@ public class kth_smallest_element_in_a_sorted_matrix02 {
 
         class Tuple implements Comparable<Tuple> {
             int x, y, val;
+
             public Tuple(int x, int y, int val) {
-                this.x = x; this.y = y; this.val = val;
+                this.x = x;
+                this.y = y;
+                this.val = val;
             }
 
             //按照val值的大小在入队时排序

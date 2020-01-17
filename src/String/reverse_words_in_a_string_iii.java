@@ -1,4 +1,5 @@
 package String;
+
 //557
 //给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。
 //示例 1:
@@ -12,7 +13,7 @@ public class reverse_words_in_a_string_iii {
 
     static class Solution {
         public String reverseWords(String s) {
-            String words[] = s.split(" ");
+            String[] words = s.split(" ");
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < words.length; i++) {
                 result.append(new StringBuilder(words[i]).reverse()).append(" ");

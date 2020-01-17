@@ -25,6 +25,7 @@ public class convert_sorted_list_to_binary_search_tree {
     //另见官方题解使用快慢指针进行寻找链表中间节点
     static class Solution {
         ListNode head;
+
         public TreeNode sortedListToBST(ListNode head) {
             this.head = head;
             int length = 0;

@@ -25,6 +25,7 @@ public class palindrome_partitioning {
     static class Solution {
         List<List<String>> result = new ArrayList<>();
         List<String> output = new ArrayList<>();
+
         public List<List<String>> partition(String s) {
             DFS(s, 0);
             return result;

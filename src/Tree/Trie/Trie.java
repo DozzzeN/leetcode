@@ -17,25 +17,18 @@ import java.util.TreeMap;
 //(see pain panda dog)
 
 public class Trie {
-    private static class Node {
-        public boolean isWord;
-        public Map<Character, Node> next;
-
-        public Node() {
-            next = new TreeMap<>();
-        }
-
-        public Node(boolean isWord) {
-            this();
-            this.isWord = isWord;
-        }
-    }
-
     private Node root;
     private int size;
-
     public Trie() {
         root = new Node();
+    }
+
+    public static void main(String[] args) {
+        Trie trie = new Trie();
+        trie.add("flower");
+        System.out.println(trie.contains("flower"));
+        trie.add("flow");
+        System.out.println(trie.containsPrefix("flo"));
     }
 
     public int size() {
@@ -140,11 +133,17 @@ public class Trie {
         return false;
     }
 
-    public static void main(String[] args) {
-        Trie trie = new Trie();
-        trie.add("flower");
-        System.out.println(trie.contains("flower"));
-        trie.add("flow");
-        System.out.println(trie.containsPrefix("flo"));
+    private static class Node {
+        public boolean isWord;
+        public Map<Character, Node> next;
+
+        public Node() {
+            next = new TreeMap<>();
+        }
+
+        public Node(boolean isWord) {
+            this();
+            this.isWord = isWord;
+        }
     }
 }

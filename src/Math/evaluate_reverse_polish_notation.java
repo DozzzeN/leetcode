@@ -22,25 +22,25 @@ public class evaluate_reverse_polish_notation {
             Stack<Integer> operand = new Stack<>();
             for (int i = 0; i < tokens.length; i++) {
                 switch (tokens[i]) {
-                    case "+" : {
+                    case "+": {
                         int op1 = operand.pop();
                         int op2 = operand.pop();
                         operand.push(op2 + op1);
                         break;
                     }
-                    case "-" : {
+                    case "-": {
                         int op1 = operand.pop();
                         int op2 = operand.pop();
                         operand.push(op2 - op1);
                         break;
                     }
-                    case "*" : {
+                    case "*": {
                         int op1 = operand.pop();
                         int op2 = operand.pop();
                         operand.push(op2 * op1);
                         break;
                     }
-                    case "/" : {
+                    case "/": {
                         int op1 = operand.pop();
                         int op2 = operand.pop();
                         operand.push(op2 / op1);

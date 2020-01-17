@@ -2,7 +2,7 @@ package Array_Matrix;
 
 public class toeplitz_matrix02 {
     public static void main(String[] args) {
-        int[][] matrix = {  {1, 2, 3, 4},
+        int[][] matrix = {{1, 2, 3, 4},
                 {5, 1, 2, 3},
                 {9, 5, 1, 2}};
         System.out.println(new toeplitz_matrix02.Solution().isToeplitzMatrix(matrix));

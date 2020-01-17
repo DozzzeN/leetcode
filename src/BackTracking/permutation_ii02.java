@@ -3,7 +3,6 @@ package BackTracking;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Stack;
 
 //42
 //给定一个可包含重复数字的序列，返回所有不重复的全排列。
@@ -16,6 +15,11 @@ import java.util.Stack;
 //  [2,1,1]
 //]
 public class permutation_ii02 {
+    public static void main(String[] args) {
+        List<List<Integer>> permuteUnique = new permutation_ii02.Solution().permuteUnique(new int[]{1, 1, 2});
+        System.out.println(permuteUnique);
+    }
+
     static class Solution {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> solution = new ArrayList<>();
@@ -50,10 +54,5 @@ public class permutation_ii02 {
             findPermuteUnique(nums, 0);
             return result;
         }
-    }
-
-    public static void main(String[] args) {
-        List<List<Integer>> permuteUnique = new permutation_ii02.Solution().permuteUnique(new int[]{1, 1, 2});
-        System.out.println(permuteUnique);
     }
 }

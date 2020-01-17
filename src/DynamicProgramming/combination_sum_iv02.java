@@ -33,7 +33,7 @@ public class combination_sum_iv02 {
 
         //±¸ÍüÂ¼
         public int combinationSum4(int[] nums, int target) {
-            int memo[] = new int[target + 1];
+            int[] memo = new int[target + 1];
             memo[0] = 1;
             for (int i = 1; i <= target; i++) {
                 for (int num : nums) {

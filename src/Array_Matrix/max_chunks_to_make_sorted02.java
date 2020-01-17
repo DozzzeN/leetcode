@@ -1,8 +1,9 @@
 package Array_Matrix;
+
 //769
 public class max_chunks_to_make_sorted02 {
     public static void main(String[] args) {
-        int[] arr = {1,0,2,3,4};
+        int[] arr = {1, 0, 2, 3, 4};
 //        int[] arr = {0,2,1};
         System.out.println(new max_chunks_to_make_sorted02.Solution().maxChunksToSorted(arr));
     }

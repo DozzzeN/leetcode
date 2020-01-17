@@ -55,7 +55,7 @@ public class path_sum_ii {
                 if (sum == target) {
                     result.add(new ArrayList<>(solution));
                 }
-            } else{
+            } else {
                 if (root.left != null) {
                     pathSum(root.left, sum, target);
                 }

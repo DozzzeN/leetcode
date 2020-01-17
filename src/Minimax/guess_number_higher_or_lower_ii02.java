@@ -25,7 +25,7 @@ public class guess_number_higher_or_lower_ii02 {
         public int getMoneyAmount(int n) {
             int[][] dp = new int[n + 1][n + 1];
             //len = 1ʱΪ0 len = end - start + 1 start = end - len + 1 end = len + start - 1
-            for (int len = 2; len <= n ; len++) {
+            for (int len = 2; len <= n; len++) {
                 for (int start = 1; start <= n - len + 1; start++) {
                     int minRes = Integer.MAX_VALUE;
                     for (int piv = start; piv < len + start - 1; piv++) {

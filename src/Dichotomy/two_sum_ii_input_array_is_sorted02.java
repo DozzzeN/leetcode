@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class two_sum_ii_input_array_is_sorted02 {
     public static void main(String[] args) {
         int[] result = new two_sum_ii_input_array_is_sorted02.Solution().twoSum(
-                new int[]{5,25,75}, 6);
+                new int[]{5, 25, 75}, 6);
         System.out.println(Arrays.toString(result));
     }
 

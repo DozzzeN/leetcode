@@ -95,7 +95,7 @@ public class lru_cache {
             } else if (node == this.end) {
                 this.end = this.end.pre;
                 this.end.next = null;
-            }else {
+            } else {
                 node.next.pre = node.pre;
                 node.pre.next = node.next;
             }

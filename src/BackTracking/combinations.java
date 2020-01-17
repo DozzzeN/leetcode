@@ -1,7 +1,6 @@
 package BackTracking;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -25,6 +24,7 @@ public class combinations {
 
     static class Solution {
         List<List<Integer>> result = new ArrayList<>();
+
         public List<List<Integer>> combine(int n, int k) {
             getCombine(0, new Stack<>(), k, n);
             return result;

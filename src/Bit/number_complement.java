@@ -28,7 +28,7 @@ public class number_complement {
             int result = 0;
             int temp = num;
             int length = 0;
-            for (; temp != 0;) {
+            for (; temp != 0; ) {
                 temp >>= 1;
                 length++;
             }

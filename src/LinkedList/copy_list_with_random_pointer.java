@@ -12,26 +12,27 @@ package LinkedList;
 //提示：
 //	你必须返回给定头的拷贝作为对克隆列表的引用。
 public class copy_list_with_random_pointer {
-    static class Node {
-        public int val;
-        public Node next;
-        public Node random;
-
-        public Node() {}
-
-        public Node(int _val,Node _next,Node _random) {
-            val = _val;
-            next = _next;
-            random = _random;
-        }
-    }
-
     public static void main(String[] args) {
         Node one = new Node();
         one.val = -1;
         one.next = null;
         one.random = null;
         System.out.println(new copy_list_with_random_pointer.Solution().copyRandomList(one));
+    }
+
+    static class Node {
+        public int val;
+        public Node next;
+        public Node random;
+
+        public Node() {
+        }
+
+        public Node(int _val, Node _next, Node _random) {
+            val = _val;
+            next = _next;
+            random = _random;
+        }
     }
 
     //原链表中插入拷贝节点，遍历链表，每一个节点N生成一个复制节点N'插入到N后面

@@ -1,6 +1,7 @@
 package Array_Matrix;
 
 import java.util.Arrays;
+
 //769
 //数组arr是[0, 1, ..., arr.length - 1]的一种排列，我们将这个数组分割成几个“块”，并将这些块分别进行排序。
 //之后再连接起来，使得连接的结果和按升序排序后的原数组相同。
@@ -12,7 +13,7 @@ import java.util.Arrays;
 public class max_chunks_to_make_sorted {
     public static void main(String[] args) {
 //        int[] arr = {1,0,2,3,4};
-        int[] arr = {0,2,1};
+        int[] arr = {0, 2, 1};
         System.out.println(new max_chunks_to_make_sorted.Solution().maxChunksToSorted(arr));
     }
 

@@ -24,6 +24,7 @@ public class validate_binary_search_tree03 {
     static class Solution {
         private double lastRoot = -Double.MAX_VALUE;
         private boolean isValid = true;
+
         public boolean isValidBST(TreeNode root) {
             if (root == null || root.left == null && root.right == null) {
                 return true;

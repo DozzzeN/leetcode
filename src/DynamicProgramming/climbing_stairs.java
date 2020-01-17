@@ -25,6 +25,7 @@ public class climbing_stairs {
     public static void main(String[] args) {
         System.out.println(new climbing_stairs.Solution().climbStairs(44));
     }
+
     //´¿µÝ¹é»á³¬Ê±
     static class Solution {
         public int climbStairs(int n) {

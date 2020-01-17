@@ -64,6 +64,7 @@ public class print_in_order03 {
         public Foo() {
 
         }
+
         //相当于都锁了Foo对象，也可以创建一个final对象lock，锁lock对象并调用lock的wait和notify
         public synchronized void first(Runnable printFirst) throws InterruptedException {
             while (flag != 0) {

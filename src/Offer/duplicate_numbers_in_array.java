@@ -16,7 +16,7 @@ public class duplicate_numbers_in_array {
         //    这里要特别注意~返回任意重复的一个，赋值duplication[0]
         // Return value:       true if the input is valid, and there are some duplications in the array number
         //                     otherwise false
-        public boolean duplicate(int numbers[],int length,int [] duplication) {
+        public boolean duplicate(int[] numbers, int length, int[] duplication) {
             int[] hashtable = new int[length];
             for (int i = 0; i < length; i++) {
                 if (hashtable[numbers[i]] == 0) {

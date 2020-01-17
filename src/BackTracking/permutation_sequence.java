@@ -30,6 +30,7 @@ public class permutation_sequence {
                 }
             }
         }
+
         public String getPermutation(int n, int k) {
             this.visited = new int[n];
             int[] nums = new int[n];

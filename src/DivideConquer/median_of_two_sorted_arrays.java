@@ -15,7 +15,7 @@ package DivideConquer;
 public class median_of_two_sorted_arrays {
     public static void main(String[] args) {
         System.out.println(new median_of_two_sorted_arrays.Solution().findMedianSortedArrays(
-                new int[]{1,3}, new int[]{2}
+                new int[]{1, 3}, new int[]{2}
         ));
     }
 
@@ -34,7 +34,7 @@ public class median_of_two_sorted_arrays {
 
         public double findMedianSortedArrays(int[] nums1, int nums1_left, int nums1_right,
                                              int[] nums2, int nums2_left, int nums2_right, int k) {
-            System.out.println(nums1_left +" "+ nums1_right +" "+ nums2_left +" "+ nums2_right +" "+ k);
+            System.out.println(nums1_left + " " + nums1_right + " " + nums2_left + " " + nums2_right + " " + k);
             if (nums1_right <= nums1_left || nums1_right <= 0 || nums1_left >= nums1.length) {
 //                if (nums2.length <= k) k--;
                 return nums2[k - 1];

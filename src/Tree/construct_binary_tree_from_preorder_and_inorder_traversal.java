@@ -21,11 +21,13 @@ public class construct_binary_tree_from_preorder_and_inorder_traversal {
         TreeNode node = new construct_binary_tree_from_preorder_and_inorder_traversal.Solution().buildTree(preorder, inorder);
         System.out.println(new binary_tree_level_order_traversal.Solution().levelOrder(node));
     }
+
     static class Solution {
         //深度优先搜索+分治
         public TreeNode buildTree(int[] preorder, int[] inorder) {
             return buildTree(preorder, inorder, 0, preorder.length - 1, 0, inorder.length - 1);
         }
+
         //只传固定的数组和始末指针，不用传各个左子树和右子树数组，减少空间复杂度
         //preorder = 7, 10, 4, 3, 1, 2, 8, 11
         //          ps                     pe

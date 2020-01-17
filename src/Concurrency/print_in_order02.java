@@ -1,7 +1,6 @@
 package Concurrency;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Semaphore;
 
 //1114
 //我们提供了一个类：
@@ -64,6 +63,7 @@ public class print_in_order02 {
     static class Foo {
         private final CountDownLatch first_second = new CountDownLatch(1);
         private final CountDownLatch second_third = new CountDownLatch(1);
+
         public Foo() {
 
         }

@@ -25,6 +25,7 @@ public class climbing_stairs02 {
     public static void main(String[] args) {
         System.out.println(new climbing_stairs02.Solution().climbStairs(10));
     }
+
     static class Solution {
         //从倒推变成顺推——请参考官方题解的多种方法
         public int climbStairs(int n) {

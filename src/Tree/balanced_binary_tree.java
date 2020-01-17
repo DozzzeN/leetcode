@@ -36,6 +36,7 @@ public class balanced_binary_tree {
 
     static class Solution {
         boolean isBalanced = true;
+
         public boolean isBalanced(TreeNode root) {
             getBalance(root);
             return isBalanced;

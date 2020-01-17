@@ -30,7 +30,7 @@ public class distinct_subsequences {
     //  dp[s][t] = dp[s+1][t]
     static class Solution {
         public int numDistinct(String s, String t) {
-            int dp[][] = new int[s.length() + 1][t.length() + 1];
+            int[][] dp = new int[s.length() + 1][t.length() + 1];
             for (int i = 0; i <= s.length(); i++) {
                 dp[i][t.length()] = 1;
             }

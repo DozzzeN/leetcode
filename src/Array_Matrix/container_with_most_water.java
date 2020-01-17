@@ -27,11 +27,11 @@ public class container_with_most_water {
         //双指针法，容量取决于最短的那个板子，只需要移动短板的指针即可
         public int maxArea(int[] height) {
             int result = 0;
-            for (int i = 0, j = height.length - 1; i != j;) {
-                result = Math.max(result,Math.abs(i - j) * Math.min(height[i], height[j]));
+            for (int i = 0, j = height.length - 1; i != j; ) {
+                result = Math.max(result, Math.abs(i - j) * Math.min(height[i], height[j]));
                 if (height[i] > height[j]) {
                     j--;
-                }else {
+                } else {
                     i++;
                 }
             }

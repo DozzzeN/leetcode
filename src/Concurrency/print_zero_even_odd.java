@@ -54,10 +54,10 @@ public class print_zero_even_odd {
     }
 
     static class ZeroEvenOdd {
-        private int n;
         private final Semaphore zero = new Semaphore(1);
         private final Semaphore even = new Semaphore(0);
         private final Semaphore odd = new Semaphore(0);
+        private int n;
 
         public ZeroEvenOdd(int n) {
             this.n = n;

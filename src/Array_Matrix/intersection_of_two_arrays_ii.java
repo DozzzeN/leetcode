@@ -2,6 +2,7 @@ package Array_Matrix;
 
 import java.util.ArrayList;
 import java.util.List;
+
 //350
 //给定两个数组，编写一个函数来计算它们的交集。
 public class intersection_of_two_arrays_ii {
@@ -9,7 +10,7 @@ public class intersection_of_two_arrays_ii {
     public static void main(String[] args) {
         intersection_of_two_arrays_ii.Solution solution = new intersection_of_two_arrays_ii.Solution();
         int[] nums1 = new int[]{};
-        int[] nums2 = new int[]{9,4,9,8,4};
+        int[] nums2 = new int[]{9, 4, 9, 8, 4};
         int[] result = solution.intersect(nums1, nums2);
         for (int i : result) {
             System.out.println(i);

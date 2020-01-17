@@ -40,8 +40,8 @@ public class symmetric_tree02 {
             if (left == null && right == null) return true;
             else if (left == null || right == null) return false;
             if (left.val != right.val) return false;
-            return isSymmetric(left.right,right.left)
-                    && isSymmetric(left.left,right.right);
+            return isSymmetric(left.right, right.left)
+                    && isSymmetric(left.left, right.right);
         }
     }
 }

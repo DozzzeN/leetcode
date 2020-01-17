@@ -17,6 +17,13 @@ import java.util.List;
 //  [3,2,1]
 //]
 public class permutation03 {
+    public static void main(String[] args) {
+        List<List<Integer>> result = new permutation03.Solution().permute(new int[]{1, 2, 3});
+        for (List<Integer> integers : result) {
+            System.out.println(integers);
+        }
+    }
+
     static class Solution {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> solution = new ArrayList<>();
@@ -27,6 +34,7 @@ public class permutation03 {
             permute(nums, 0);
             return result;
         }
+
         //求解nums的所有排列，其中用visited去掉重复值
         public void permute(int[] nums, int start) {
             if (start == nums.length) {  // 输出
@@ -42,13 +50,6 @@ public class permutation03 {
                     }
                 }
             }
-        }
-    }
-
-    public static void main(String[] args) {
-        List<List<Integer>> result = new permutation03.Solution().permute(new int[]{1, 2, 3});
-        for (List<Integer> integers : result) {
-            System.out.println(integers);
         }
     }
 }

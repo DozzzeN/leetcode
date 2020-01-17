@@ -27,7 +27,7 @@ public class ugly_number_ii02 {
                 if (ugly[i] == ugly[_3] * 3) _3++;
                 if (ugly[i] == ugly[_5] * 5) _5++;
             }
-            return ugly[n -1];
+            return ugly[n - 1];
         }
     }
 }

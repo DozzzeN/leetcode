@@ -12,6 +12,7 @@ public class partition_list {
         ListNode result = new partition_list.Solution().partition(head, 2);
         System.out.println(ListNode.listNodeToString(result));
     }
+
     //从左往右扫描，首先找到第一个大于X的指针，然后在该指针左边不断插入小于X的元素
     //在头节点之前插入节点防止头节点为空
     static class Solution {

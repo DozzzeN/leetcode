@@ -1,7 +1,6 @@
 package BackTracking;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 //46
@@ -18,12 +17,21 @@ import java.util.List;
 //  [3,2,1]
 //]
 public class permutation02 {
+    public static void main(String[] args) {
+        List<List<Integer>> result = new permutation02.Solution().permute(new int[]{1, 2, 3});
+        for (List<Integer> integers : result) {
+            System.out.println(integers);
+        }
+    }
+
     static class Solution {
         List<List<Integer>> result = new ArrayList<>();
+
         public List<List<Integer>> permute(int[] nums) {
             permute(nums, 0);
             return result;
         }
+
         //start表示，nums[start]后的数据进行全排列
         public void permute(int[] nums, int start) {
             if (start == nums.length) {  // 输出
@@ -45,13 +53,6 @@ public class permutation02 {
             int t = array[s];
             array[s] = array[i];
             array[i] = t;
-        }
-    }
-
-    public static void main(String[] args) {
-        List<List<Integer>> result = new permutation02.Solution().permute(new int[]{1, 2, 3});
-        for (List<Integer> integers : result) {
-            System.out.println(integers);
         }
     }
 }

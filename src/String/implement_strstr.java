@@ -12,7 +12,7 @@ package String;
 public class implement_strstr {
     public static void main(String[] args) {
         System.out.println(new implement_strstr.Solution().strStr("a"
-                ,""));
+                , ""));
     }
 
     //±©Á¦·¨£¬Ë«Ñ­»·

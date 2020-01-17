@@ -14,7 +14,7 @@ package Greedy;
 //解释: 无论怎样，你总会到达索引为 3 的位置。但该位置的最大跳跃长度是 0 ， 所以你永远不可能到达最后一个位置。
 public class jump_game04 {
     public static void main(String[] args) {
-        System.out.println(new jump_game04.Solution().canJump(new int[]{3,2,1,0,4}));
+        System.out.println(new jump_game04.Solution().canJump(new int[]{3, 2, 1, 0, 4}));
     }
 
     //贪心（倒推）

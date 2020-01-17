@@ -1,7 +1,5 @@
 package Math;
 
-import java.util.Arrays;
-
 //43
 //给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。
 //示例 1:
@@ -40,7 +38,7 @@ public class multiply_strings {
                 }
             }
             int count = 0;
-            for (int i = result.length - 1; i >=0; i--) {
+            for (int i = result.length - 1; i >= 0; i--) {
                 if (result[i] == 0) {
                     count++;
                 } else break;

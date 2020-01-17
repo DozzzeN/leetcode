@@ -11,7 +11,7 @@ package Array_Matrix;
 //     随后，在第 7 天（股票价格 = 1）的时候买入，在第 8 天 （股票价格 = 4）的时候卖出，这笔交易所能获得利润 = 4-1 = 3
 public class best_time_to_buy_and_sell_stock_iii {
     public static void main(String[] args) {
-        int[] input = new int[]{7,6,4,3,1};
+        int[] input = new int[]{7, 6, 4, 3, 1};
         System.out.println(new Solution().maxProfit(input));
     }
 

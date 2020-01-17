@@ -17,6 +17,7 @@ public class sqrtx {
     public static void main(String[] args) {
         System.out.println(new sqrtx.Solution().mySqrt(6));
     }
+
     //¶þ·Ö·¨
     static class Solution {
         public int mySqrt(int x) {

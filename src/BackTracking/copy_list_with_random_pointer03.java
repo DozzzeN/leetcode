@@ -47,6 +47,7 @@ public class copy_list_with_random_pointer03 {
     //遍历按照深度优先进行。我们需要在回溯的过程中记录已经访问过的节点，否则因为随机指针的存在我们可能会产生死循环。
     static class Solution {
         Map<Node, Node> visit = new HashMap<>();//使用map记录已经拷贝的节点的引用
+
         public Node copyRandomList(Node head) {
             if (head == null) return null;
             if (visit.containsKey(head)) return visit.get(head);//防止环路死循环

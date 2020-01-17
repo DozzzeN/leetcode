@@ -28,13 +28,13 @@ public class ugly_number_ii {
                 int temp = ugly.get(i - 1) * 2;
                 for (int j = 0; j < i; j++) {
                     if (!ugly.contains(ugly.get(j) * 2)) {
-                        temp = Math.min(temp,ugly.get(j) * 2);
+                        temp = Math.min(temp, ugly.get(j) * 2);
                     }
                     if (!ugly.contains(ugly.get(j) * 3)) {
-                        temp = Math.min(temp,ugly.get(j) * 3);
+                        temp = Math.min(temp, ugly.get(j) * 3);
                     }
                     if (!ugly.contains(ugly.get(j) * 5)) {
-                        temp = Math.min(temp,ugly.get(j) * 5);
+                        temp = Math.min(temp, ugly.get(j) * 5);
                     }
                 }
                 ugly.add(i, temp);

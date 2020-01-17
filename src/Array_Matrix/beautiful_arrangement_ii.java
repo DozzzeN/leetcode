@@ -1,6 +1,7 @@
 package Array_Matrix;
 
-import java.util.*;
+import java.util.Arrays;
+
 //667
 //给定两个整数 n 和 k，你需要实现一个数组，这个数组包含从 1 到 n 的 n 个不同整数，同时满足以下条件：
 //

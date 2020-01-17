@@ -11,6 +11,11 @@ package Math;
 //示例 3:
 //输入: 120
 public class reverse_integer {
+    public static void main(String[] args) {
+        reverse_integer.Solution sol = new reverse_integer.Solution();
+        System.out.println(sol.reverse(153436469));//1534236469
+    }
+
     //注意溢出
     static class Solution {
         public int reverse(int x) {
@@ -31,10 +36,5 @@ public class reverse_integer {
             }
             return x > 0 ? (int) y : -(int) y;
         }
-    }
-
-    public static void main(String[] args) {
-        reverse_integer.Solution sol = new reverse_integer.Solution();
-        System.out.println(sol.reverse(153436469));//1534236469
     }
 }

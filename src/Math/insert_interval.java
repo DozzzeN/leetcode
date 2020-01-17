@@ -15,8 +15,8 @@ import java.util.Arrays;
 public class insert_interval {
     public static void main(String[] args) {
         int[][] result = new insert_interval.Solution().insert(
-                new int[][]{{3,5},{12,15}},
-                new int[]{6,6}
+                new int[][]{{3, 5}, {12, 15}},
+                new int[]{6, 6}
         );
         for (int[] ints : result) {
             System.out.println(Arrays.toString(ints));

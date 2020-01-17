@@ -5,7 +5,7 @@ public class test {
     public static final String KEY_SHA = "SHA";
 
     public static void main(String[] args) {
-       addPwd();
+        addPwd();
 //        vrfy(1, "[1]", new String[]{
 //                "[2]", "[6]"
 //        });

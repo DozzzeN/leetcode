@@ -40,7 +40,7 @@ public class gray_code {
                 lastResult = new ArrayList<>();
                 int length = (int) Math.pow(2, i);
                 for (int j = 0; j < length / 2; j++) {
-                    lastResult.add("0"+result.get(j));
+                    lastResult.add("0" + result.get(j));
                 }
                 for (int j = length / 2; j < length; j++) {
                     lastResult.add("1" + result.get(length - j - 1));
@@ -52,7 +52,7 @@ public class gray_code {
         public static List<Integer> strToInt(List<String> stringList) {
             List<Integer> result = new ArrayList<>();
             for (String s : stringList) {
-                result.add(Integer.valueOf(s,2));
+                result.add(Integer.valueOf(s, 2));
             }
             return result;
         }

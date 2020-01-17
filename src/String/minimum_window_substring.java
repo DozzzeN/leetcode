@@ -26,7 +26,7 @@ public class minimum_window_substring {
             for (int i = 0; i < s.length(); i++) {
                 for (int j = i; j < s.length(); j++) {
                     String temp = s.substring(i, j + 1);
-                    if (isContain(temp,t)) {
+                    if (isContain(temp, t)) {
                         list.add(temp);
                     }
                 }
