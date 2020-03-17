@@ -57,7 +57,8 @@ public class binary_tree_maximum_path_sum {
             double right = Math.max(getMax(node.right), 0);
             //保存旧路径，即不依赖当前节点的路径
             max = Math.max(max, node.val + left + right);
-            //只选择一条路径（左或右）
+//            max = Math.max(max, Math.max(node.val + left + right, left + right));
+            //继续递归获得返回值：只选择一条路径（左或右）
             return node.val + Math.max(left, right);
         }
     }

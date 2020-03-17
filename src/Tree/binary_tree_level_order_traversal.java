@@ -38,7 +38,7 @@ public class binary_tree_level_order_traversal {
         //广度优先搜索（也可以使用递归）
         public List<List<Integer>> levelOrder(TreeNode root) {
             List<List<Integer>> result = new ArrayList<>();
-            List<TreeNode> queue = new LinkedList<>();
+            LinkedList<TreeNode> queue = new LinkedList<>();
             List<Integer> temp = new ArrayList<>();
             if (root != null) {
                 queue.add(root);
@@ -52,7 +52,7 @@ public class binary_tree_level_order_traversal {
             //已经遍历的节点数目
             int visitedNodeNumber = 0;
             while (queue.size() != 0) {
-                TreeNode node = ((LinkedList<TreeNode>) queue).poll();
+                TreeNode node = queue.poll();
                 temp.add(node.val);
                 visitedNodeNumber++;
                 if (node.left != null) {
@@ -67,8 +67,7 @@ public class binary_tree_level_order_traversal {
                     visitedNodeNumber = 0;
                     currentNodeNumber = nextNodeNumber;
                     nextNodeNumber = 0;
-                    List<Integer> deleted = new ArrayList<>(temp);
-                    result.add(deleted);
+                    result.add(new ArrayList<>(temp));
                     temp.clear();
                 }
             }
