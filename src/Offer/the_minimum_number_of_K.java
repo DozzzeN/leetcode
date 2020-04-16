@@ -11,38 +11,48 @@ public class the_minimum_number_of_K {
         ));
     }
 
+    //快速排序的partition()方法，会返回一个整数j使得a[l..j-1]小于等于a[j]，且a[j+1..h]大于等于a[j]，
+    //此时a[j]就是数组的第j大元素。可以利用这个特性找出数组的第K个元素，这种找第K个元素的算法称为快速选择算法。
     public static class Solution {
         public ArrayList<Integer> GetLeastNumbers_Solution(int[] input, int k) {
             ArrayList<Integer> result = new ArrayList<>();
             if (input == null || input.length == 0 || k <= 0 || k > input.length) return result;
-            quicksort(input, 0, input.length - 1);
+            findKthSmallest(input, k - 1);
             for (int i = 0; i < k; i++) {
                 result.add(input[i]);
             }
             return result;
         }
 
-        public void quicksort(int[] input, int low, int high) {
-            if (low >= high) return;
-            int axis = input[low];
-            int i = low, j = high;
-            while (i < j) {
-                while (input[j] >= axis && i < j) {
-                    j--;
-                }
-                while (input[i] <= axis && i < j) {
-                    i++;
-                }
-                if (i < j) {
-                    input[i] = input[i] + input[j];
-                    input[j] = input[i] - input[j];
-                    input[i] = input[i] - input[j];
-                }
+        public void findKthSmallest(int[] nums, int k) {
+            int l = 0, h = nums.length - 1;
+            while (l < h) {
+                int j = partition(nums, l, h);
+                if (j == k) break;//j就是第k个元素
+                //以j开始二分
+                if (j > k) h = j - 1;
+                else l = j + 1;
             }
-            input[low] = input[i];
-            input[i] = axis;
-            quicksort(input, low, i - 1);
-            quicksort(input, i + 1, high);
+        }
+
+        //快排中的partition算法
+        private int partition(int[] nums, int l, int h) {
+            int p = nums[l];
+            int i = l, j = h + 1;
+            while (true) {
+                while (i != h && nums[++i] < p) ;
+                while (j != l && nums[--j] > p) ;
+                if (i >= j) break;
+                swap(nums, i, j);
+            }
+            swap(nums, l, j);
+            return j;
+        }
+
+        private void swap(int[] nums, int i, int j) {
+            int t = nums[i];
+            nums[i] = nums[j];
+            nums[j] = t;
         }
     }
 }

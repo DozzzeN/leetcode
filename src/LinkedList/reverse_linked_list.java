@@ -11,6 +11,8 @@ public class reverse_linked_list {
     public static void main(String[] args) {
         ListNode input = ListNode.stringToListNode("[1,2,3,4,5]");
         System.out.println(ListNode.listNodeToString(new reverse_linked_list.Solution().reverseList(input)));
+        ListNode input2 = ListNode.stringToListNode("[1,2,3,4,5]");
+        System.out.println(ListNode.listNodeToString(new reverse_linked_list.Solution().reverseList02(input2)));
     }
 
     static class Solution {
@@ -26,6 +28,18 @@ public class reverse_linked_list {
                 next = temp;
             }
             return cur;
+        }
+
+        //头插法 new->head->next 将next插入到new和head之间，然后原来的next是现在的head
+        public ListNode reverseList02(ListNode head) {
+            ListNode newList = new ListNode(-1);
+            while (head != null) {
+                ListNode next = head.next;
+                head.next = newList.next;
+                newList.next = head;
+                head = next;
+            }
+            return newList.next;
         }
     }
 }

@@ -6,6 +6,7 @@ package Offer;
 public class integer_power {
     public static void main(String[] args) {
         System.out.println(new integer_power.Solution().Power(-2.5, -5));
+        System.out.println(new integer_power.Solution().Power02(-2.5, -5));
     }
 
     public static class Solution {
@@ -23,6 +24,22 @@ public class integer_power {
                 }
             }
             return exponent > 0 ? result : 1 / result;
+        }
+
+        //x^n = (x*x)^(n/2) n%2=0
+        //    = x*(x*x)^(n/2) n%2=1
+        //快速模平方运算
+        public double Power02(double base, int exponent) {
+            if (exponent == 0) return 1;
+            if (exponent == 1) return base;
+            boolean isNegative = false;
+            if (exponent < 0) {
+                exponent = -exponent;
+                isNegative = true;
+            }
+            double pow = Power02(base * base, exponent / 2);
+            if (exponent % 2 != 0) pow = pow * base;
+            return isNegative ? 1 / pow : pow;
         }
     }
 }

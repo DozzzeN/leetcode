@@ -1,5 +1,6 @@
 package Offer;
 
+import java.util.Arrays;
 import java.util.TreeSet;
 
 //https://www.nowcoder.com/practice/762836f4d43d43ca9deb273b3de8e1f4?tpId=13&tqId=11198&tPage=3&rp=3&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
@@ -13,6 +14,9 @@ public class playing_cards_straight {
         System.out.println(new playing_cards_straight.Solution().isContinuous(new int[]{
                 1, 3, 0, 0, 5
         }));
+        System.out.println(new playing_cards_straight.Solution().isContinuous02(new int[]{
+                1, 3, 0, 0, 5
+        }));
     }
 
     public static class Solution {
@@ -22,14 +26,27 @@ public class playing_cards_straight {
             TreeSet<Integer> set = new TreeSet<>();
             for (int i = 0; i < numbers.length - 1; i++) {
                 //不能有重复的牌
-                if (set.contains(numbers[i])) {
-                    return false;
-                }
-                if (numbers[i] != 0) {
+                if (set.contains(numbers[i])) return false;
+                if (numbers[i] != 0)
                     set.add(numbers[i]);
-                }
             }
             return set.last() - set.first() < 5;
+        }
+
+        public boolean isContinuous02(int[] nums) {
+            if (nums.length < 5) return false;
+            Arrays.sort(nums);
+            //统计癞子数量
+            int cnt = 0;
+            for (int num : nums)
+                if (num == 0)
+                    cnt++;
+            //使用癞子去补全不连续的顺子
+            for (int i = cnt; i < nums.length - 1; i++) {
+                if (nums[i + 1] == nums[i]) return false;
+                cnt -= nums[i + 1] - nums[i] - 1;
+            }
+            return cnt >= 0;
         }
     }
 }

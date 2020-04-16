@@ -18,7 +18,7 @@ public class search_2d_matrix02 {
             if (array == null || array.length == 0 || array[0].length == 0) return false;
             if (target < array[0][0]) return false;
             int row = array.length, col = array[0].length;
-            //从左下开始查找
+            //从左下开始查找（也可以从右上开始查找）
             for (int i = row - 1, j = 0; i >= 0 && j < col; ) {
                 if (array[i][j] > target) {
                     i--;

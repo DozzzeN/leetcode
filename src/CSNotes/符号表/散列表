@@ -1,0 +1,57 @@
+散列表类似于数组，可以把散列表的散列值看成数组的索引值。访问散列表和访问数组元素一样快速，
+它可以在常数时间内实现查找和插入操作。
+由于无法通过散列值知道键的大小关系，因此散列表无法实现有序性操作。
+
+1.散列函数
+对于一个大小为M的散列表，散列函数能够把任意键转换为[0,M-1]内的正整数，该正整数即为hash值。
+散列表存在冲突，也就是两个不同的键可能有相同的hash值。
+散列函数应该满足以下三个条件：
+一致性：相等的键应当有相等的hash值，两个键相等表示调用equals()返回的值相等。
+高效性：计算应当简便，有必要的话可以把hash值缓存起来，在调用hash函数时直接返回。
+均匀性：所有键的hash值应当均匀地分布到[0,M-1]之间，如果不能满足这个条件，有可能产生很多冲突，从而导致散列表的性能下降。
+除留余数法可以将整数散列到[0,M-1]之间，例如一个正整数k，计算k%M既可得到一个[0,M-1]之间的hash值。
+注意M最好是一个素数，否则无法利用键包含的所有信息。例如M为10^k，那么只能利用键的后k位。
+对于其它数，可以将其转换成整数的形式，然后利用除留余数法。例如对于浮点数，可以将其的二进制形式转换成整数。
+对于多部分组合的类型，每个部分都需要计算hash值，这些hash值都具有同等重要的地位。
+为了达到这个目的，可以将该类型看成R进制的整数，每个部分都具有不同的权值。
+例如，字符串的散列函数实现如下：
+int hash = 0;
+for (int i = 0; i < s.length(); i++)
+    hash = (R * hash + s.charAt(i)) % M;
+再比如，拥有多个成员的自定义类的哈希函数如下：
+int hash = (((day * R + month) % M) * R + year) % M;
+R通常取31。
+Java中的hashCode()实现了哈希函数，但是默认使用对象的内存地址值。在使用hashCode()时，应当结合除留余数法来使用。
+因为内存地址是32位整数，我们只需要31位的非负整数，因此应当屏蔽符号位之后再使用除留余数法。
+int hash = (x.hashCode() & 0x7fffffff) % M;
+使用Java的HashMap等自带的哈希表实现时，只需要去实现Key类型的hashCode()函数即可。
+Java规定hashCode()能够将键均匀分布于所有的32位整数，Java中的String、Integer等对象的hashCode()都能实现这一点。
+以下展示了自定义类型如何实现hashCode()：
+public class Transaction {
+    private final String who;
+    private final Date when;
+    private final double amount;
+
+    public Transaction(String who, Date when, double amount) {
+        this.who = who;
+        this.when = when;
+        this.amount = amount;
+    }
+
+    public int hashCode() {
+        int hash = 17;
+        int R = 31;
+        hash = R * hash + who.hashCode();
+        hash = R * hash + when.hashCode();
+        hash = R * hash + ((Double) amount).hashCode();
+        return hash;
+    }
+}
+2.拉链法
+拉链法使用链表来存储hash值相同的键，从而解决冲突。
+查找需要分两步，首先查找Key所在的链表，然后在链表中顺序查找。
+对于N个键，M条链表(N>M)，如果哈希函数能够满足均匀性的条件，每条链表的大小趋向于N/M，因此未命中的查找和插入操作所需要的比较次数为~N/M。
+3.线性探测法
+线性探测法使用空位来解决冲突，当冲突发生时，向前探测一个空位来存储冲突的键。
+使用线性探测法，数组的大小M应当大于键的个数N（M>N)。
+见LinearProbingHashST.java

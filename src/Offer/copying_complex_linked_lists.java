@@ -45,5 +45,34 @@ public class copying_complex_linked_lists {
             }
             return null;
         }
+
+        public RandomListNode Clone02(RandomListNode pHead) {
+            if (pHead == null) return null;
+            //插入新节点
+            RandomListNode cur = pHead;
+            while (cur != null) {
+                RandomListNode clone = new RandomListNode(cur.label);
+                clone.next = cur.next;
+                cur.next = clone;
+                cur = clone.next;
+            }
+            //建立random链接
+            cur = pHead;
+            while (cur != null) {
+                RandomListNode clone = cur.next;
+                if (cur.random != null)
+                    clone.random = cur.random.next;//1`的克隆指向2的克隆的next，即2`的克隆
+                cur = clone.next;
+            }
+            //拆分
+            cur = pHead;
+            RandomListNode pCloneHead = pHead.next;
+            while (cur.next != null) {
+                RandomListNode next = cur.next;
+                cur.next = next.next;
+                cur = next;
+            }
+            return pCloneHead;
+        }
     }
 }

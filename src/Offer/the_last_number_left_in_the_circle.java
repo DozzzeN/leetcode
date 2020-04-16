@@ -10,7 +10,7 @@ package Offer;
 public class the_last_number_left_in_the_circle {
     public static void main(String[] args) {
         System.out.println(new the_last_number_left_in_the_circle.Solution().LastRemaining_Solution(
-                2, 3
+                10, 7
         ));
     }
 
@@ -22,8 +22,7 @@ public class the_last_number_left_in_the_circle {
                 people[i] = i;
             }
             int remove = -1;
-            int left = n;
-            while (left > 1) {
+            for (int left = n; left > 1; left--) {
                 remove += m;
                 if (remove >= left) {
                     remove %= left;
@@ -31,7 +30,6 @@ public class the_last_number_left_in_the_circle {
                 //模拟删除，将数组往前移，同时数组的范围缩小至left
                 if (n - 1 - remove >= 0) System.arraycopy(people, remove + 1, people, remove, n - 1 - remove);
                 remove--;
-                left--;
             }
             return people[0];
         }

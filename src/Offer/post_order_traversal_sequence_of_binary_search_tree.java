@@ -22,13 +22,9 @@ public class post_order_traversal_sequence_of_binary_search_tree {
             if (left >= right) return true;//注意不是等于，存在mid=right的情况
             int root = sequence[right];
             int mid = left;
-            while (mid < right && sequence[mid] < root) {
-                mid++;
-            }
-            for (int i = mid; i < right; i++) {
-                if (sequence[i] < root) {
-                    return false;
-                }
+            while (mid < right && sequence[mid] < root) mid++;
+            for (int i = mid; i < right; i++) {//左边无需比较，因为mid在找的时候就保证了左边小于mid
+                if (sequence[i] < root) return false;
             }
             return verify(sequence, left, mid - 1) && verify(sequence, mid, right - 1);
         }

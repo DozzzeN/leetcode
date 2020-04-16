@@ -7,7 +7,8 @@ package Offer;
 public class string_representing_the_value {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.isNumeric(new char[]{'1', 'e', '1', '.', '6'}));
+        System.out.println(solution.isNumeric(new char[]{'1', 'e', '+', '1', '6'}));
+        System.out.println(solution.isNumeric02(new char[]{'1', 'e', '+', '1', '6'}));
     }
 
     static public class Solution {
@@ -55,6 +56,11 @@ public class string_representing_the_value {
                 }
             }
             return true;
+        }
+
+        public boolean isNumeric02(char[] str) {
+            if (str == null || str.length == 0) return false;
+            return new String(str).matches("[+-]?\\d*(\\.\\d+)?([eE][+-]?\\d+)?");
         }
     }
 }

@@ -11,6 +11,9 @@ public class flip_word_order_column {
         System.out.println(new flip_word_order_column.Solution().ReverseSentence(
                 " "
         ));
+        System.out.println(new flip_word_order_column.Solution().ReverseSentence02(
+                "student. a am I"
+        ));
     }
 
     public static class Solution {
@@ -26,6 +29,32 @@ public class flip_word_order_column {
             }
             result.deleteCharAt(result.length() - 1);
             return result.toString();
+        }
+
+        //不能用额外的空间，反转每个单词后反转整个字符串
+        public String ReverseSentence02(String str) {
+            char[] chars = str.toCharArray();
+            int i = 0, j = 0;
+            while (j <= str.length()) {
+                if (j == str.length() || chars[j] == ' ') {
+                    reverse(chars, i, j - 1);
+                    i = j + 1;
+                }
+                j++;
+            }
+            reverse(chars, 0, str.length() - 1);
+            return new String(chars);
+        }
+
+        private void reverse(char[] c, int i, int j) {
+            while (i < j)
+                swap(c, i++, j--);
+        }
+
+        private void swap(char[] c, int i, int j) {
+            char t = c[i];
+            c[i] = c[j];
+            c[j] = t;
         }
     }
 }

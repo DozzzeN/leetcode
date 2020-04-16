@@ -1,5 +1,6 @@
 package Offer;
 
+import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,10 @@ public class the_first_character_that_appears_only_once {
         System.out.println(new the_first_character_that_appears_only_once.Solution().FirstNotRepeatingChar(
                 "google"
         ));
-        System.out.println(new the_first_character_that_appears_only_once.Solution().FirstNotRepeatingChar2(
+        System.out.println(new the_first_character_that_appears_only_once.Solution().FirstNotRepeatingChar02(
+                "google"
+        ));
+        System.out.println(new the_first_character_that_appears_only_once.Solution().FirstNotRepeatingChar03(
                 "google"
         ));
     }
@@ -38,7 +42,7 @@ public class the_first_character_that_appears_only_once {
         }
 
         //哈希表的方法
-        public int FirstNotRepeatingChar2(String str) {
+        public int FirstNotRepeatingChar02(String str) {
             if (str == null || str.length() == 0) return -1;
             int[] hashtable = new int[256];
             for (int i = 0; i < str.length(); i++) {
@@ -48,6 +52,25 @@ public class the_first_character_that_appears_only_once {
                 if (hashtable[str.charAt(i)] == 1) {
                     return i;
                 }
+            }
+            return -1;
+        }
+
+        //以上实现的空间复杂度还不是最优的。考虑到只需要找到只出现一次的字符，
+        //那么需要统计的次数信息只有0，1，更大，使用两个比特位就能存储这些信息。
+        public int FirstNotRepeatingChar03(String str) {
+            BitSet bs1 = new BitSet(256);
+            BitSet bs2 = new BitSet(256);
+            for (char c : str.toCharArray()) {
+                if (!bs1.get(c) && !bs2.get(c))//出现过
+                    bs1.set(c);
+                else if (bs1.get(c) && !bs2.get(c))//出现了了两次
+                    bs2.set(c);
+            }
+            for (int i = 0; i < str.length(); i++) {
+                char c = str.charAt(i);
+                if (bs1.get(c) && !bs2.get(c))//出现了了两次
+                    return i;
             }
             return -1;
         }

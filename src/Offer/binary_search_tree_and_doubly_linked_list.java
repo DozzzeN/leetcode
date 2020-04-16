@@ -14,6 +14,11 @@ public class binary_search_tree_and_doubly_linked_list {
         root.right.left = new TreeNode(9);
         root.right.right = new TreeNode(11);
         System.out.println(new binary_search_tree_and_doubly_linked_list.Solution().Convert(root));
+        TreeNode first = root.left.left;
+        while (first != null) {
+            System.out.println(first.val);
+            first = first.right;
+        }
     }
 
     //是用一个数组来存储中序遍历的节点，然后再从头到尾，建立节点前后的连接关系

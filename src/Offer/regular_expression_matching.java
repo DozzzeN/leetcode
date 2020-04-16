@@ -7,9 +7,9 @@ package Offer;
 public class regular_expression_matching {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.match(
-                new char[]{'a'},
-                new char[]{'.', '*'}));
+        System.out.println(solution.match02(
+                new char[]{'a', 'a', 'a'},
+                new char[]{'a', '*'}));
     }
 
     //特殊用例 "a" ".*"
@@ -17,6 +17,37 @@ public class regular_expression_matching {
     static public class Solution {
         public boolean match(char[] str, char[] pattern) {
             return matchHelper(str, 0, pattern, 0);
+        }
+
+        //dp[i][j]表示str的前i个和pattern的前j个是否匹配
+        //如str="aaa" pattern="a*"
+        //初始化后              第二行匹配              第三行匹配               第四行匹配
+        //    _    a    *          _    a    *           _    a    *           _    a    *
+        //_   1         1(0)   _   1         1       _   1         1       _   1         1
+        //a                    a        1(1) 1(2)    a        1(1) 1(2)    a        1(1) 1(2)
+        //a                    a                     a             1(2)    a             1(2)
+        //a                    a                     a                     a             1(2)
+        public boolean match02(char[] str, char[] pattern) {
+            boolean[][] dp = new boolean[str.length + 1][pattern.length + 1];
+
+            dp[0][0] = true;
+            for (int i = 1; i <= pattern.length; i++)
+                if (pattern[i - 1] == '*')
+                    dp[0][i] = dp[0][i - 2];//见(0)
+
+            for (int i = 1; i <= str.length; i++)
+                for (int j = 1; j <= pattern.length; j++)
+                    if (str[i - 1] == pattern[j - 1] || pattern[j - 1] == '.')
+                        dp[i][j] = dp[i - 1][j - 1];//见(1)
+                    else if (pattern[j - 1] == '*')
+                        if (pattern[j - 2] == str[i - 1] || pattern[j - 2] == '.') {//见(2)
+                            dp[i][j] |= dp[i][j - 1]; // a* counts as single a
+                            dp[i][j] |= dp[i - 1][j]; // a* counts as multiple a
+                            dp[i][j] |= dp[i][j - 2]; // a* counts as empty
+                        } else
+                            dp[i][j] = dp[i][j - 2];   // a* only counts as empty
+
+            return dp[str.length][pattern.length];
         }
 
         public boolean matchHelper(char[] str, int i, char[] pattern, int j) {

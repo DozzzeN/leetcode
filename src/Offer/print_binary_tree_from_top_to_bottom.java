@@ -24,8 +24,7 @@ public class print_binary_tree_from_top_to_bottom {
             if (root != null) {
                 queue.add(root);
                 result.add(root.val);
-            }
-            else return result;
+            } else return result;
             while (!queue.isEmpty()) {
                 TreeNode node = queue.poll();
                 if (node.left != null) {

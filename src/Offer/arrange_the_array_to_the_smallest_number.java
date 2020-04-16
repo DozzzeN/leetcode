@@ -1,7 +1,7 @@
 package Offer;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 //https://www.nowcoder.com/practice/8fecd3f8ba334add803bf2a06af1b993?tpId=13&tqId=11185&tPage=2&rp=2&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
@@ -12,7 +12,10 @@ public class arrange_the_array_to_the_smallest_number {
         System.out.println(new arrange_the_array_to_the_smallest_number.Solution().PrintMinNumber(
                 new int[]{3334, 3, 3333332}
         ));
-        System.out.println(new arrange_the_array_to_the_smallest_number.Solution().PrintMinNumber2(
+        System.out.println(new arrange_the_array_to_the_smallest_number.Solution().PrintMinNumber02(
+                new int[]{3334, 3, 3333332}
+        ));
+        System.out.println(new arrange_the_array_to_the_smallest_number.Solution().PrintMinNumber03(
                 new int[]{3334, 3, 3333332}
         ));
     }
@@ -52,7 +55,7 @@ public class arrange_the_array_to_the_smallest_number {
         }
 
         //贪心算法：o1+o2比o2+o1大时o1就应该在o2前面
-        public String PrintMinNumber2(int[] numbers) {
+        public String PrintMinNumber02(int[] numbers) {
             StringBuilder result = new StringBuilder();
             if (numbers == null || numbers.length == 0) return result.toString();
             List<String> list = new ArrayList<>();
@@ -64,6 +67,20 @@ public class arrange_the_array_to_the_smallest_number {
                 result.append(s);
             }
             return result.toString();
+        }
+
+        //可以看成是一个排序问题，在比较两个字符串S1和S2的大小时，应该比较的是S1+S2和S2+S1的大小，
+        //如果S1+S2<S2+S1，那么应该把S1排在前面，否则应该把S2排在前面。
+        public String PrintMinNumber03(int[] numbers) {
+            if (numbers == null || numbers.length == 0) return "";
+            String[] nums = new String[numbers.length];
+            for (int i = 0; i < numbers.length; i++)
+                nums[i] = numbers[i] + "";
+            Arrays.sort(nums, (s1, s2) -> (s1 + s2).compareTo(s2 + s1));
+            StringBuilder ret = new StringBuilder();
+            for (String str : nums)
+                ret.append(str);
+            return ret.toString();
         }
     }
 }

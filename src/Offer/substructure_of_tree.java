@@ -23,7 +23,7 @@ public class substructure_of_tree {
     public static class Solution {
         public boolean HasSubtree(TreeNode root1, TreeNode root2) {
             if (root1 == null || root2 == null) return false;
-            return isSubstructure(root1, root2) || isSubstructure(root1.left, root2) || isSubstructure(root1.right, root2);
+            return isSubstructure(root1, root2) || HasSubtree(root1.left, root2) || HasSubtree(root1.right, root2);
         }
 
         public boolean isSubstructure(TreeNode root1, TreeNode root2) {

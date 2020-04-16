@@ -1,5 +1,7 @@
 package String;
 
+import java.util.Arrays;
+
 //28
 //实现strStr()函数。
 //给定一个haystack字符串和一个needle字符串，在haystack字符串中找出needle字符串出现的第一个位置(从0开始)。如果不存在，则返回-1。
@@ -12,7 +14,7 @@ package String;
 public class implement_strstr02 {
     public static void main(String[] args) {
 
-        System.out.println(new implement_strstr02.Solution().strStr("", ""));
+        System.out.println(new implement_strstr02.Solution().strStr("ababababacabababa", "ababaca"));
     }
 
 
@@ -58,6 +60,7 @@ public class implement_strstr02 {
                     k = next[k];
                 }
             }
+            System.out.println(Arrays.toString(next));
         }
     }
 }

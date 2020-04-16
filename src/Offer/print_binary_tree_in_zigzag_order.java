@@ -1,9 +1,6 @@
 package Offer;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 //https://www.nowcoder.com/practice/91b69814117f4e8097390d107d2efbe0?tpId=13&tqId=11212&tPage=3&rp=3&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 //请实现一个函数按照之字形打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右至左的顺序打印，第三行按照从左到右的顺序打印，其他行以此类推。
@@ -17,6 +14,7 @@ public class print_binary_tree_in_zigzag_order {
         root.right.left = new TreeNode(6);
         root.right.right = new TreeNode(7);
         System.out.println(new print_binary_tree_in_zigzag_order.Solution().Print(root));
+        System.out.println(new print_binary_tree_in_zigzag_order.Solution().Print02(root));
     }
 
     public static class Solution {
@@ -54,6 +52,29 @@ public class print_binary_tree_in_zigzag_order {
                     depth++;
                     temp.clear();
                 }
+            }
+            return result;
+        }
+
+        //将空节点也入队，出队时判断一下即可，可以减少很多代码
+        public ArrayList<ArrayList<Integer>> Print02(TreeNode pRoot) {
+            ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+            Queue<TreeNode> queue = new LinkedList<>();
+            queue.add(pRoot);
+            boolean reverse = false;
+            while (!queue.isEmpty()) {
+                ArrayList<Integer> list = new ArrayList<>();
+                int cnt = queue.size();
+                while (cnt-- > 0) {
+                    TreeNode node = queue.poll();
+                    if (node == null) continue;
+                    list.add(node.val);
+                    queue.add(node.left);
+                    queue.add(node.right);
+                }
+                if (reverse) Collections.reverse(list);
+                reverse = !reverse;
+                if (list.size() != 0) result.add(list);
             }
             return result;
         }

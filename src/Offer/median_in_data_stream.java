@@ -19,12 +19,14 @@ public class median_in_data_stream {
         System.out.println(solution.GetMedian());
     }
 
+    //如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。
+    //如果从数据流中读出偶数个数值，那么中位数就是所有数值排序之后中间两个数的平均值。
     //小顶堆中的元素都大于等于大顶堆中的元素
     //   4(小)  3(大)
     //  / \    / \
     // 5   6  1   2
     public static class Solution {
-        private Queue<Integer> small = new PriorityQueue<>();
+        private Queue<Integer> small = new PriorityQueue<>();//默认小顶堆
         private Queue<Integer> big = new PriorityQueue<>((o1, o2) -> o2 - o1);
         private int count = 0;
 
@@ -40,11 +42,8 @@ public class median_in_data_stream {
         }
 
         public Double GetMedian() {
-            if (count % 2 == 0) {
-                return (double) (big.peek() + small.peek()) / 2;
-            } else {
-                return (double) small.peek();
-            }
+            if (count % 2 == 0) return (double) (big.peek() + small.peek()) / 2;
+            else return (double) small.peek();
         }
     }
 }

@@ -11,8 +11,8 @@ public class remove_duplicate_nodes_in_a_linked_list {
         pHead.next.next.next = new ListNode(1);
         pHead.next.next.next.next = new ListNode(1);
         pHead.next.next.next.next.next = new ListNode(1);
-        pHead.next.next.next.next.next.next = new ListNode(1);
-        ListNode result = new remove_duplicate_nodes_in_a_linked_list.Solution().deleteDuplication(pHead);
+        pHead.next.next.next.next.next.next = new ListNode(2);
+        ListNode result = new remove_duplicate_nodes_in_a_linked_list.Solution().deleteDuplication02(pHead);
         while (result != null) {
             System.out.println(result.val);
             result = result.next;
@@ -47,6 +47,19 @@ public class remove_duplicate_nodes_in_a_linked_list {
                 }
             }
             return dummy.next;
+        }
+
+        public ListNode deleteDuplication02(ListNode pHead) {
+            if (pHead == null || pHead.next == null) return pHead;
+            ListNode next = pHead.next;
+            if (pHead.val == next.val) {
+                while (next != null && pHead.val == next.val)
+                    next = next.next;//多个相同的值时，next指向下一个不相同的节点，如2-2-2-3，next指向3
+                return deleteDuplication02(next);//忽略2，直接返回3
+            } else {
+                pHead.next = deleteDuplication02(pHead.next);
+                return pHead;
+            }
         }
     }
 }

@@ -16,8 +16,7 @@ public class the_depth_of_the_binary_tree {
 
     public static class Solution {
         public int TreeDepth(TreeNode root) {
-            if (root == null) return 0;
-            else return 1 + Math.max(TreeDepth(root.left), TreeDepth(root.right));
+            return root == null ? 0 : 1 + Math.max(TreeDepth(root.left), TreeDepth(root.right));
         }
     }
 }

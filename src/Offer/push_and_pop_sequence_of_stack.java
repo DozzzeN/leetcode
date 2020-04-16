@@ -9,8 +9,8 @@ public class push_and_pop_sequence_of_stack {
         System.out.println(new push_and_pop_sequence_of_stack.Solution().IsPopOrder(
                 new int[]{1, 2, 3, 4, 5},
 //                new int[]{4, 5, 3, 2, 1}
-//                new int[]{4, 3, 5, 1, 2}
-                new int[]{3, 5, 4, 2, 1}
+                new int[]{4, 3, 5, 1, 2}
+//                new int[]{3, 5, 4, 2, 1}
         ));
     }
 
@@ -18,12 +18,11 @@ public class push_and_pop_sequence_of_stack {
         public boolean IsPopOrder(int[] pushA, int[] popA) {
             if (popA.length == 0 || popA.length != pushA.length) return false;
             Stack<Integer> stack = new Stack<>();
-            int j = 0;
-            for (int value : pushA) {
-                stack.push(value);
-                while (!stack.isEmpty() && stack.peek() == popA[j]) {
+            for (int pushIndex = 0, popIndex = 0; pushIndex < pushA.length; pushIndex++) {
+                stack.push(pushA[pushIndex]);
+                while (!stack.isEmpty() && stack.peek() == popA[popIndex]) {
                     stack.pop();
-                    j++;
+                    popIndex++;
                 }
             }
             return stack.isEmpty();

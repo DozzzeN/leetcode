@@ -27,11 +27,14 @@ public class rotate_the_smallest_number_of_an_array {
         }
 
         //二分法
+        //将旋转数组对半分可以得到一个包含最小元素的新旋转数组，以及一个非递减排序的数组。
+        //新的旋转数组的数组元素是原数组的一半，
+        //从而将问题规模减少了一半，这种折半性质的算法的时间复杂度为O(logN)。
         public int minNumberInRotateArray2(int[] array) {
             if (array == null || array.length == 0) return 0;
             int left = 0, right = array.length - 1, mid;
             while (left < right) {
-                //特色情况，非递减数组
+                //特殊情况，非递减数组
                 if (array[left] < array[right])
                     return array[left];
                 mid = (left + right) >>> 1;

@@ -1,48 +1,40 @@
-import java.math.BigInteger;
-import java.security.MessageDigest;
-
 public class test {
-    public static final String KEY_SHA = "SHA";
-
     public static void main(String[] args) {
-        addPwd();
-//        vrfy(1, "[1]", new String[]{
-//                "[2]", "[6]"
-//        });
+        //==比较的是地址
+        //但是当为基本类型时,比较的是值,如果俩边有包装类型,则先将包装类型转换为基本类型在比较值是否相等。
+        //当俩边都为包装类型时,即为对象,比较的是地址。
+        Integer i01 = 59;
+        int i02 = 59;
+        Integer i03 = Integer.valueOf(59);//也就是Integer i03 = 59;
+        Integer i04 = new Integer(59);
+        Integer i05 = new Integer(59);
+        System.out.println(i01 == i02);//Integer转为int值比较
+        System.out.println(i01 == i03);//-128到127会缓存到Integer的常量池，Integer.valueOf会被编译器优化成i01的形式
+        System.out.println(i01 == i04);//i04产生新的对象，比较地址
+        System.out.println(i02 == i03);//-128到127会缓存到Integer的常量池
+        System.out.println(i02 == i04);//比较值
+        System.out.println(i03 == i04);//i04产生新的对象，比较地址
+        System.out.println(i04 == i05);//两个对象的地址不同
 
-    }
+        System.out.println();
 
-    public static void vrfy(int index, String _value, String[] proof) {
-        int residue = index - 1;
-        String value = _value;
-        for (int i = 0; i < proof.length; i++) {
-            if (residue % 2 == 0) {
-                value = hash(value, proof[i]);
-                System.out.println(value);
-            } else {
-                value = hash(proof[i], value);
-                System.out.println(value);
-            }
-            residue /= 2;
-        }
-    }
+        Integer i06 = 128;
+        int i07 = 128;
+        Integer i08 = Integer.valueOf(128);
+        Integer i09 = new Integer(128);
+        Integer i10 = new Integer(128);
+        System.out.println(i06 == i07);//Integer转为int值比较
+        System.out.println(i06 == i08);//-128到127会缓存到Integer的常量池，Integer.valueOf会被编译器优化成i01的形式
+        System.out.println(i06 == i09);//i04产生新的对象，比较地址
+        System.out.println(i07 == i08);//-128到127会缓存到Integer的常量池
+        System.out.println(i07 == i09);//比较值
+        System.out.println(i08 == i09);//i04产生新的对象，比较地址
+        System.out.println(i09 == i10);//两个对象的地址不同
 
-    public static String hash(String input1, String input2) {
-        return "[" + input1 + "||" + input2 + "]";
-    }
-
-    public static void addPwd() {
-        String inputStr = "1";
-        BigInteger sha = null;
-        System.out.println("=======加密前的数据:" + inputStr);
-        byte[] inputData = inputStr.getBytes();
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance(KEY_SHA);
-            messageDigest.update(inputData);
-            sha = new BigInteger(messageDigest.digest());
-            System.out.println("SHA加密后:" + sha.toString(32));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String s1 = "xiaopeng";
+        String s2 = "xiaopeng";
+        String s3 = s1;
+        System.out.println(s1 == s2);
+        System.out.println(s1 == s3);
     }
 }

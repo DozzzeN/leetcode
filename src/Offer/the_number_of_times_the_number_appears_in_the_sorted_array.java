@@ -13,6 +13,9 @@ public class the_number_of_times_the_number_appears_in_the_sorted_array {
 
     public static class Solution {
         public int GetNumberOfK(int[] array, int k) {
+            //注意调用原生的二分不会找到第一次出现的位置，如k=8时返回5
+            //0-7 mid=3 a[mid]=6
+            //4-7 mid=5 a[mid]=8 => return 5
             int index = Arrays.binarySearch(array, k);
             if (index < 0) return 0;
             int result = 1;

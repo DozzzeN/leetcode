@@ -27,10 +27,8 @@ public class k_th_node_f_the_binary_search_tree {
             if (root != null) {
                 travel(root.left, k);
                 current++;
-                if (current == k) {
+                if (current == k)
                     node = root;
-                    return;
-                }
                 travel(root.right, k);
             }
         }

@@ -10,6 +10,10 @@ public class adjust_array_order_so_that_odd_numbers_precede_even_numbers {
         int[] a = new int[]{4, 3, 2, 5, 6, 7, 1};
         new adjust_array_order_so_that_odd_numbers_precede_even_numbers.Solution().reOrderArray(a);
         System.out.println(Arrays.toString(a));
+        new adjust_array_order_so_that_odd_numbers_precede_even_numbers.Solution().reOrderArray02(a);
+        System.out.println(Arrays.toString(a));
+        new adjust_array_order_so_that_odd_numbers_precede_even_numbers.Solution().reOrderArray03(a);
+        System.out.println(Arrays.toString(a));
     }
 
     public static class Solution {
@@ -28,6 +32,42 @@ public class adjust_array_order_so_that_odd_numbers_precede_even_numbers {
                     pre++;
                 }
             }
+        }
+
+        //创建一个新数组，时间复杂度O(N)，空间复杂度O(N)
+        public void reOrderArray02(int[] nums) {
+            //奇数个数
+            int oddCnt = 0;
+            for (int x : nums)
+                if (!isEven(x))
+                    oddCnt++;
+            int[] copy = nums.clone();
+            int i = 0, j = oddCnt;
+            for (int num : copy) {
+                if (num % 2 == 1) nums[i++] = num;
+                else nums[j++] = num;
+            }
+        }
+
+        private boolean isEven(int x) {
+            return x % 2 == 0;
+        }
+
+        //使用冒泡思想，每次都当前偶数上浮到当前最右边。时间复杂度O(N^2)，空间复杂度O(1)，时间换空间
+        public void reOrderArray03(int[] nums) {
+            for (int i = nums.length - 1; i > 0; i--) {
+                for (int j = 0; j < i; j++) {
+                    if (isEven(nums[j]) && !isEven(nums[j + 1])) {
+                        swap(nums, j, j + 1);
+                    }
+                }
+            }
+        }
+
+        private void swap(int[] nums, int i, int j) {
+            int t = nums[i];
+            nums[i] = nums[j];
+            nums[j] = t;
         }
     }
 }

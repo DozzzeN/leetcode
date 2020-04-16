@@ -4,6 +4,8 @@ package Offer;
 //题目描述
 //一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
 
+import java.util.Arrays;
+
 public class pervert_jump {
     public static void main(String[] args) {
         System.out.println(new pervert_jump.Solution().JumpFloorII(3));
@@ -12,6 +14,15 @@ public class pervert_jump {
     public static class Solution {
         public int JumpFloorII(int target) {
             return 1 << (target - 1);
+        }
+
+        public int JumpFloorII2(int target) {
+            int[] dp = new int[target];
+            Arrays.fill(dp, 1);
+            for (int i = 1; i < target; i++)
+                for (int j = 0; j < i; j++)
+                    dp[i] += dp[j];
+            return dp[target - 1];
         }
     }
 }

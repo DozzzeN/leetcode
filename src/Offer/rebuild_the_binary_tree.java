@@ -11,6 +11,8 @@ public class rebuild_the_binary_tree {
         System.out.println(new binary_tree_level_order_traversal.Solution().levelOrder(node));
     }
 
+    //前序遍历的第一个值为根节点的值，使用这个值将中序遍历结果分成两部分，左部分为树的左子树中序遍历结果，
+    //右部分为树的右子树中序遍历的结果。然后分别对左右子树递归地求解。
     public static class Solution {
         public TreeNode reConstructBinaryTree(int[] pre, int[] in) {
             return buildTree(pre, in, 0, pre.length - 1, 0, in.length - 1);

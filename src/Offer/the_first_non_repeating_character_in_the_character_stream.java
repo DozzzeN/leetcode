@@ -9,26 +9,23 @@ public class the_first_non_repeating_character_in_the_character_stream {
         String input = "helloworld";
         for (int i = 0; i < input.length(); i++) {
             solution.Insert(input.charAt(i));
-            System.out.println(solution.FirstAppearingOnce());
         }
+        System.out.println(solution.FirstAppearingOnce());
     }
 
     static public class Solution {
         private int[] hashtable = new int[256];
         private String string = "";
 
-        //Insert one char from stringstream
         public void Insert(char ch) {
             hashtable[ch]++;
             string += ch;
         }
 
-        //return the first appearence once char in current stringstream
         public char FirstAppearingOnce() {
             for (int i = 0; i < string.length(); i++) {
-                if (hashtable[string.charAt(i)] == 1) {
+                if (hashtable[string.charAt(i)] == 1)
                     return string.charAt(i);
-                }
             }
             return '#';
         }

@@ -4,6 +4,7 @@ package Offer;
 //输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 //输出描述:
 //对应每个测试案例，输出两个数，小的先输出。
@@ -46,20 +47,17 @@ public class and_two_numbers_for_s {
         //双指针
         public ArrayList<Integer> FindNumbersWithSum2(int[] array, int sum) {
             int left = 0, right = array.length - 1;
-            ArrayList<Integer> result = new ArrayList<Integer>();
             while (left < right) {
                 //乘积一定最小
                 if (array[left] + array[right] == sum) {
-                    result.add(array[left]);
-                    result.add(array[right]);
-                    break;
+                    return new ArrayList<>(Arrays.asList(array[left], array[right]));
                 } else if (array[left] + array[right] < sum) {
                     left++;
                 } else {
                     right--;
                 }
             }
-            return result;
+            return new ArrayList<>();
         }
     }
 }

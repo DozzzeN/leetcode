@@ -12,6 +12,11 @@ public class binary_search_tree_and_doubly_linked_list02 {
         root.right.left = new TreeNode(9);
         root.right.right = new TreeNode(11);
         System.out.println(new binary_search_tree_and_doubly_linked_list02.Solution().Convert(root));
+        TreeNode first = root.left.left;
+        while (first != null) {
+            System.out.println(first.val);
+            first = first.right;
+        }
     }
 
     //我们知道二叉排序树中序遍历的结果是排好序的，然后再想到线索化二叉树的过程，很容易联想到用线索化二叉树的方法去做，
@@ -22,19 +27,20 @@ public class binary_search_tree_and_doubly_linked_list02 {
         TreeNode pre = null;
         TreeNode root = null;
 
+        //         10(root)
+        //   6   //  \\   14
+        //  / \ //    \\ /  \
+        // 4   8(pre)  12   16
         public TreeNode Convert(TreeNode pRootOfTree) {
-            if (pRootOfTree == null)
-                return null;
-            Convert(pRootOfTree.left);
-            if (root == null) {
-                root = pRootOfTree;
-            }
-            if (pre != null) {
+            if (pRootOfTree == null) return null;
+            Convert(pRootOfTree.left);//中序遍历
+            if (root == null) root = pRootOfTree;//保存当前节点（根节点）
+            if (pre != null) {//当前节点与左节点进行链接
                 pRootOfTree.left = pre;
                 pre.right = pRootOfTree;
             }
-            pre = pRootOfTree;
-            Convert(pRootOfTree.right);
+            pre = pRootOfTree;//此时当前节点变为左节点
+            Convert(pRootOfTree.right);//中序遍历
             return root;
         }
     }

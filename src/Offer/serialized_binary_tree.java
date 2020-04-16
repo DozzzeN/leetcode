@@ -1,6 +1,8 @@
 package Offer;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 //https://www.nowcoder.com/practice/cf7e25aa97c04cc1a68c8f040e71fb84?tpId=13&tqId=11214&tPage=4&rp=4&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
 //请实现两个函数，分别用来序列化和反序列化二叉树
@@ -25,16 +27,12 @@ public class serialized_binary_tree {
         root2.right.right = new TreeNode(4);
         String str = solution.Serialize(root);
         System.out.println(str);
-        System.out.println(new binary_tree_level_order_traversal.Solution().levelOrder(
-                solution.Deserialize(str)
-        ));
+        System.out.println(new binary_tree_level_order_traversal.Solution().levelOrder(solution.Deserialize(str)));
 
         solution = new serialized_binary_tree.Solution();
         str = solution.Serialize(root2);
         System.out.println(str);
-        System.out.println(new binary_tree_level_order_traversal.Solution().levelOrder(
-                solution.Deserialize(str)
-        ));
+        System.out.println(new binary_tree_level_order_traversal.Solution().levelOrder(solution.Deserialize(str)));
     }
 
     //先序遍历
@@ -73,12 +71,12 @@ public class serialized_binary_tree {
             return deserialize(list);
         }
 
-        public TreeNode deserialize(List list) {
+        public TreeNode deserialize(List<String> list) {
             if (list.get(0).equals("#")) {
                 list.remove(0);
                 return null;
             } else {
-                TreeNode node = new TreeNode(Integer.parseInt((String) list.get(0)));
+                TreeNode node = new TreeNode(Integer.parseInt(list.get(0)));
                 list.remove(0);
                 node.left = deserialize(list);
                 node.right = deserialize(list);

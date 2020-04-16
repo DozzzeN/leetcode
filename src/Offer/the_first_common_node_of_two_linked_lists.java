@@ -20,15 +20,8 @@ public class the_first_common_node_of_two_linked_lists {
             if (pHead1 == null || pHead2 == null) return null;
             ListNode p1 = pHead1, p2 = pHead2;
             while (p1 != p2) {
-                p1 = p1.next;
-                p2 = p2.next;
-                if (p1 == null && p2 == null) break;
-                if (p1 == null) {
-                    p1 = pHead2;
-                }
-                if (p2 == null) {
-                    p2 = pHead1;
-                }
+                p1 = (p1 == null) ? pHead2 : p1.next;
+                p2 = (p2 == null) ? pHead1 : p2.next;
             }
             return p1;
         }
