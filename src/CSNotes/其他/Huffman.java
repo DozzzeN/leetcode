@@ -59,7 +59,7 @@ public class Huffman {
         encode(node.right, encoding + '1', encodingForChar);
     }
 
-    private class Node implements Comparable<Node> {
+    private static class Node implements Comparable<Node> {
         char ch;
         int freq;
         boolean isLeaf;

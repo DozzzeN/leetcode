@@ -1,3 +1,5 @@
+package Graph;
+
 import java.util.Arrays;
 
 public class BellmanFord {
@@ -17,7 +19,7 @@ public class BellmanFord {
     static class Solution {
         public void BellmanFord(long[][] edge, int n, int original) {
             long[] dis = new long[n];
-            int[] pre = new int[n];//代表该点在最短路径中的上一个顶点
+            int[] pre = new int[n];//代表该点在最短路径中的上一个顶点，用于路径还原
             Arrays.fill(dis, Integer.MAX_VALUE);
             Arrays.fill(pre, -1);
             dis[original] = 0;//源结点到自身距离为0
@@ -46,6 +48,7 @@ public class BellmanFord {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     if (dis[j] > dis[i] + edge[i][j]) {
+                        //更新了表示有负权环
                         flag = true;
                         break;
                     }
